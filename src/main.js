@@ -4,8 +4,3 @@ import store from "./store";
 import router from "./router";
 
 createApp(App).use(router).use(store).mount("#app");
-
-// store.dispatch({
-//   type: "incrementAsync",
-//   amount: 10,
-// });

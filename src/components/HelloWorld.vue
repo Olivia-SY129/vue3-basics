@@ -1,9 +1,6 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
-    <h2>{{ count }}</h2>
-    <button @click="increase">sync +5</button>
-    <button @click="asyncIncrease">async +10</button>
   </div>
 </template>
 
@@ -15,25 +12,6 @@ export default {
   },
   data() {
     return {};
-  },
-  computed: {
-    count() {
-      return this.$store.state.count;
-    },
-  },
-  methods: {
-    increase() {
-      this.$store.commit({
-        type: "increment",
-        amount: 5,
-      });
-    },
-    asyncIncrease() {
-      this.$store.dispatch({
-        type: "asyncIncrement",
-        amount: 10,
-      });
-    },
   },
 };
 </script>

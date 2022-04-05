@@ -7,8 +7,33 @@
     >
   </nav>
   <router-view />
+  <h2>{{ count }}</h2>
+  <button @click="increase">sync +5</button>
+  <button @click="incrementAsync">async +10</button>
 </template>
-
+<script>
+export default {
+  computed: {
+    count() {
+      return this.$store.state.count;
+    },
+  },
+  methods: {
+    increase() {
+      this.$store.commit({
+        type: "increment",
+        amount: 5,
+      });
+    },
+    incrementAsync() {
+      this.$store.dispatch({
+        type: "incrementAsync",
+        amount: 10,
+      });
+    },
+  },
+};
+</script>
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
