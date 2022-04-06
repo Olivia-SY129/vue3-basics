@@ -2,9 +2,7 @@
   <nav>
     <router-link :to="{ name: 'home' }">Home</router-link> |
     <router-link :to="{ name: 'about' }">About</router-link> |
-    <router-link :to="{ name: 'user', params: { id: '4545' } }"
-      >User</router-link
-    >
+    <router-link :to="{ name: 'user', params: { id: '1' } }">User</router-link>
   </nav>
   <router-view />
 </template>

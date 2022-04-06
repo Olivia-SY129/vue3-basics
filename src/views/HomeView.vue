@@ -3,6 +3,7 @@
     <HelloWorld msg="This is HelloWorld component" />
   </div>
   <h2>{{ count }}</h2>
+  <h2>{{ getCount }}</h2>
   <h2>Local Count added {{ countPlusLocalState }}</h2>
   <div>
     <button @click="increase">sync +5</button>
@@ -36,30 +37,30 @@ export default {
   },
   computed: {
     ...mapState({
-      count: (state) => state.count,
+      count: (state) => state.count.count,
       countAlisas: COUNT,
       countPlusLocalState(state) {
-        return state.count + +this.localCount;
+        return state.count.count + +this.localCount;
       },
     }),
-    ...mapGetters([GET_COUNT]),
+    ...mapGetters("count", [GET_COUNT]),
   },
   methods: {
     increase() {
       this.$store.commit({
-        type: COUNT_INCREMENT,
+        type: "count/" + COUNT_INCREMENT,
         amount: 5,
       });
     },
     increaseBy() {
       this.$store.commit({
-        type: COUNT_INCREMENT,
+        type: "count/" + COUNT_INCREMENT,
         amount: +this.num,
       });
     },
     incrementAsync() {
       this.$store.dispatch({
-        type: ASYNC_INCREMENT,
+        type: "count/" + ASYNC_INCREMENT,
         amount: 10,
       });
     },
